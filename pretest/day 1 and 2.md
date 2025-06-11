@@ -75,9 +75,15 @@
 ```java
 @RestController
 public class HelloController {
+    private final HelloService helloService;
+
+    public HelloController(HelloService helloService) {
+        this.helloService = helloService;
+    }
+
     @GetMapping("/hello")
     public String hello() {
-        return helloService.sayHello(); // error
+        return helloService.sayHello();
     }
 }
 ```
@@ -117,14 +123,27 @@ public class InfoService {
 }
 
 // controller
-@RestController
-public class InfoController {
-    @GetMapping("/info")
-    public String get() {
-        InfoService info = new InfoService(); // langsung di-new
-        return info.getInfo();
+@Service
+public class InfoService {
+    public String getInfo() {
+        return "Info OK";
     }
 }
+
+@RestController
+public class InfoController {
+    private final InfoService infoService;
+
+    public InfoController(InfoService infoService) {
+        this.infoService = infoService;
+    }
+
+    @GetMapping("/info")
+    public String get() {
+        return infoService.getInfo();
+    }
+}
+
 ```
 
 25.
@@ -133,7 +152,7 @@ public class InfoController {
 @RestController
 public class MathController {
     @GetMapping("/add")
-    public int addNumbers(int a, int b) {
+    public int addNumbers(@RequestParam int a, @RequestParam int b) {
         return a + b;
     }
 }
