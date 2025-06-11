@@ -1,5 +1,6 @@
 public class Main {
     public static void main(String[] args) {
+        //if else
         String nama = "putra";
         if (nama == "adhli"){
             System.out.println("Nama: Adhli");
@@ -9,6 +10,7 @@ public class Main {
             System.out.println("Nama: Falah");
         }
 
+        // Switch Case
         int angka = 3;
         String namaHari;
         switch (angka){
@@ -37,5 +39,19 @@ public class Main {
         }
 
         System.out.println("Hari ketiga adalah hari: " + namaHari);
+
+        //While loop
+        int number = 1;
+        while (number<=10) {
+            System.out.println("While loop ke-" + number);
+            number++;
+        }
+
+        //Do While
+        int numbers = 1;
+        do {
+            System.out.println("Do-while ke-" + numbers);
+            numbers++;
+        } while (numbers <=10);
     }
 }
